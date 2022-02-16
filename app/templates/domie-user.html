@@ -1,9 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'bootstrap/base.html' %}
+{% block content %}
 <div class="container">
-    <div class="col-md-8">
+    <br>
+    <br>
 
-    </div>
-    <div class="col-md-4">
-        <img src="" alt="">
-    </div>
+    <span class="d-block p-2">Get ready to ride with us</span>
+    <br>
+    <br>
+
+        <form>
+            <input type="text" name="location_query" placeholder="Search for Location" class="form-control">
+            <br>
+            <input type="submit"  value="Submit" class="btn btn-default">
+        </form>
+   
 </div>
+
+
+{% endblock %}
