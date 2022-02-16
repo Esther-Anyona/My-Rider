@@ -1,0 +1,121 @@
+ .start{
+    height: 100vh;
+    width: 100%;
+}
+.footer{
+    height: 40vh;
+    width: 100%;
+    background-color: #0000ff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.img img{
+height: 50px;
+width: 50px;
+display: inline-block;
+}
+.fab img{
+    height: 50px;
+    width: 50px;
+    float: right;
+}
+.img{
+bottom: -150px;
+position: absolute;
+  }
+  .contuct{
+ margin-left: 450%;
+ color: white;
+}
+.fab{
+    position: absolute;
+    bottom: -160px;
+    margin-left: 1000px;
+    
+ }
+ .yahoo{
+     position: absolute;
+     bottom:-85px ;
+}
+.email{
+    position: absolute;
+    bottom:68px ;
+}
+.tell{
+    position: absolute;
+    bottom:-10px ;
+}
+ h5{
+font-size: 20px;
+display: flex;
+color: white !important;
+}
+.face{
+    position: absolute;
+    bottom:-23px ;
+}
+.insta{
+    position: absolute;
+    bottom:40px ;
+}
+
+.ssup{
+    position: absolute;
+    bottom:-85px ;
+}
+ h6{
+ font-size: 20px;
+}
+
+ p{
+     position: absolute;
+     top: 60%;
+     margin-left: 280px;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     font-size: 20px;
+      font-weight:100 ;
+      font-style: italic;
+     /* text-align: center; */
+ }
+ h1{
+text-align: center;
+position: absolute;
+top: 30%;
+margin-left: 40%;
+color:red ;
+
+ }
+ .navbar-collapse {
+float: right;
+ }
+.banner-area{
+    margin-left:30%;
+
+}
+.banner-area img{
+    height:40vh;
+    width: 40vw;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .banner-area{
+    position: relative;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL7tPsYfBCN5mSsuafXNefeCdCsulyprNjIA&usqp=CAU");
+    width: 100%;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */

@@ -1,5 +1,6 @@
+from flask import render_template
 from . import main
-
+from flask import render_template
 @main.route('/')
 def index():
-  return '<h1>Welcome to Ride Link<h1>'
+  return render_template('home.html')
