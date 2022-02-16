@@ -1,5 +1,6 @@
 from . import main
 from flask import render_template,request,redirect,url_for
+from .forms import SearchForm,UsrForm
 @main.route('/')
 def index():
   return '<h1>Welcome to Ride Link<h1>'
