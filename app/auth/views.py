@@ -4,7 +4,6 @@ from ..models import User, Rider
 from .. import db
 from .forms import RegistrationFormUser, LoginFormRider, RegistrationFormRider, LoginFormUser
 from flask_login import login_user,logout_user,login_required
-from ..email import mail_message
 
 @auth.route('auth/login/user',methods=['GET','POST'])
 def login_user():
@@ -26,9 +25,6 @@ def register_user():
         user = User(email = form_user.email.data, username = form_user.username.data,password = form_user.password.data, phone_number = form_user.phone_number.data)
         db.session.add(user)
         db.session.commit()
-
-        # mail_message("Welcome to Myblog","email/welcome_user",user.email,user=user)
-        # title = "New Account"
 
         return redirect(url_for('auth.login_user'))
     return render_template('auth/register_user.html',registration_form_user = form_user)
