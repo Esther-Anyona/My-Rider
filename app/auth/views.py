@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, request, url_for, flash, session
 from . import auth
 from ..models import User, Rider
 from .. import db
@@ -13,7 +13,7 @@ def login_users():
 
         if user is not None and user.verify_password(login_form_user.password.data):
             login_user(user,login_form_user.remember.data)
-            return redirect(request.args.get('next') or url_for('main.index'))
+            return redirect(request.args.get('next') or url_for('main.user'))
 
         flash('Invalid username or Password')
     return render_template('auth/login_user.html', login_form_user = login_form_user)
@@ -26,7 +26,7 @@ def register_user():
         db.session.add(user)
         db.session.commit()
 
-        return redirect(url_for('auth.login_user'))
+        return redirect(url_for('auth.login_users'))
     return render_template('auth/register_user.html',registration_form_user = form_user)
 
 @auth.route('auth/login/rider',methods=['GET','POST'])
@@ -60,4 +60,6 @@ def register():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("main.home"))
+    return redirect(url_for("main.index"))
+
+

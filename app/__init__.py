@@ -1,18 +1,18 @@
 from flask import Flask
-# from . import auth, main, rider
 from flask_bootstrap import Bootstrap
 from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+# from flask_session import Session
 
-
+# SESSION_TYPE = 'memcache'
+# session = Session()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
 login_manager.blueprint_login_views = {
-    'user': 'auth.login_user',
+    'user': 'auth.login_users',
     'rider': 'auth.login_rider',
 }
 
@@ -27,6 +27,7 @@ def create_app(config_name):
     bootstrap.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
+    # session.init_app(app)
 
 
     # Blueprints    
