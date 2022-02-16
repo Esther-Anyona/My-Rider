@@ -11,9 +11,10 @@ from flask_login import login_required, current_user
 def index():
   return render_template('home.html')
 
-@main.route('/user')
-def user():
-  return render_template('user.html')
+# Testing
+# @main.route('/')
+# def user():
+#   return render_template('user.html')
 
 @main.route('/user/<uname>')
 def profile(uname):
