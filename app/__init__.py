@@ -18,6 +18,9 @@ def create_app(config_name):
     db.init_app(app)
 
     # Blueprints    
+    from .rider import rider as rider_blueprint
+    app.register_blueprint(rider_blueprint,url_prefix = '/rider')
+
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
 
