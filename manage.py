@@ -1,12 +1,13 @@
 from app import create_app, db
 from flask_script import Manager, Server
+from app.models import User,Rider, Review
 
 app = create_app('development')
 manager = Manager(app)
 
 @manager.shell
 def make_shell_context():
-    return dict(app = app,db = db )
+    return dict(app = app,db = db, User=User, Rider=Rider, Review=Review )
 
 manager.add_command('server',Server)
 @manager.command
