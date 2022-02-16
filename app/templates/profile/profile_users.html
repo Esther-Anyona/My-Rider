@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h3> {{user.username| title}} </h3>
+
+        {% if user.location %}
+        <p> {{user.location}}</p>
+        {%else%}
+        <p>No location data saved for {{user.username| title}}</p>
+        {% endif %}
+        {% if user == current_user %}
+            <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+        {% endif %}
+    </div>  
+</div>
+{% endblock %}
