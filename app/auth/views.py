@@ -6,7 +6,7 @@ from .forms import RegistrationFormUser, LoginFormRider, RegistrationFormRider, 
 from flask_login import login_user,logout_user,login_required
 
 @auth.route('auth/login/user',methods=['GET','POST'])
-def login_user():
+def login_users():
     login_form_user = LoginFormUser()
     if login_form_user.validate_on_submit():
         user = User.query.filter_by(email = login_form_user.email.data).first()

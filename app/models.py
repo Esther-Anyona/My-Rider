@@ -15,7 +15,6 @@ class User(UserMixin, db.Model):
     email = db. Column(db.String(255), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.Integer, unique=True, nullable=False)
-    location = db. Column(db.String(255), unique=True, nullable=False)
     reviews = db.relationship('Review',backref='user',lazy='dynamic')
 
     @property
@@ -43,8 +42,6 @@ class Rider(UserMixin, db.Model):
     email = db. Column(db.String(255), unique=True, nullable=False)
     password_secure = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.Integer, unique=True, nullable=False)
-    profile_pic_path = db.Column(db.String(255))
-    location = db. Column(db.String(255), unique=True, nullable=False)
     number_plate = db. Column(db.String(255), unique=True, nullable=False)
     reviews = db.relationship('Review',backref='rider',lazy='dynamic')
 
