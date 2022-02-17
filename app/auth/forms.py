@@ -4,8 +4,6 @@ from wtforms.validators import InputRequired,Email,EqualTo
 from ..models import User, Rider
 from wtforms import ValidationError
 
-
-
 class RegistrationFormUser(FlaskForm):
     email = StringField('Your Email Address',validators=[InputRequired(),Email()])
     username = StringField('Enter your username',validators = [InputRequired()])
@@ -14,7 +12,6 @@ class RegistrationFormUser(FlaskForm):
     password_confirm = PasswordField('Confirm Passwords',validators = [InputRequired()])
     submit = SubmitField('Sign Up')
 
-    # Custom validation
     def validate_email(self,data_field):
         if User.query.filter_by(email =data_field.data).first():
             raise ValidationError('An account with that email already exists')
@@ -22,7 +19,6 @@ class RegistrationFormUser(FlaskForm):
     def validate_username(self,data_field):
         if User.query.filter_by(username = data_field.data).first():
             raise ValidationError('The username already exists')
-
 
 class LoginFormUser(FlaskForm):
     email = StringField('Your Email Address',validators=[InputRequired(),Email()])
@@ -39,7 +35,6 @@ class RegistrationFormRider(FlaskForm):
     password_confirm = PasswordField('Confirm Passwords',validators = [InputRequired()])
     submit = SubmitField('Sign Up')
 
-    # Custom validation
     def validate_email(self,data_field):
         if Rider.query.filter_by(email =data_field.data).first():
             raise ValidationError('An account with that email already exists')
@@ -47,7 +42,6 @@ class RegistrationFormRider(FlaskForm):
     def validate_username(self,data_field):
         if Rider.query.filter_by(username = data_field.data).first():
             raise ValidationError('The username already exists')
-
 
 class LoginFormRider(FlaskForm):
     email = StringField('Your Email Address',validators=[InputRequired(),Email()])
