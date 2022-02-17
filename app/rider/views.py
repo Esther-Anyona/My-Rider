@@ -4,4 +4,4 @@ from app.rider import forms
 
 @rider.route('/rder')
 def rder():
-    return 'hi kenya'
+    return render_template('rider/rder.html')
