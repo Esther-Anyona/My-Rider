@@ -64,8 +64,7 @@ def review(rider_id):
         review = review_form.review.data
         new_review = Review(review=review, rider_id=rider_id, user_id=user_id)
         new_review.save_review()
-        return redirect(url_for('.review',rider_id = rider_id )
-    
+        return redirect(url_for('.review',rider_id = rider_id ))
     return render_template('review.html',rider = rider, reviews=reviews, review_form=review_form) 
 
 
