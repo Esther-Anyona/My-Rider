@@ -82,5 +82,10 @@ class Review(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @classmethod
+    def get_reviews(cls,id):
+        reviews = Review.query.filter_by(rider_id=id).all()
+        return reviews
+
     def __repr__(self):
         return f'Review:{self.review}'

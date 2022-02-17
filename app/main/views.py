@@ -43,3 +43,16 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update_user.html',form =form)
+
+@main.route('/review/<int:rider_id>', methods = ['GET','POST'])
+@login_required
+def review(rider_id):
+    review_form = ReviewForm()
+    rider = Rider.query.get(rider_id)
+    reviews = Review.query.filter_by(rider_id = rider_id).all()
+    if review_form.validate_on_submit():
+        review = review_form.review.data
+        new_review = Review(review=review, rider_id=rider_id, user_id=user_id)
+        new_review.save_review()
+        return redirect(url_for('.review',rider_id = rider_id ))
+    return render_template('review.html',rider = rider, reviews=reviews, review_form=review_form)
