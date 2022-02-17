@@ -1,0 +1,34 @@
+{% extends 'bootstrap/base.html' %}
+{% block content %}
+<div class="container">
+    <br>
+    <br>
+    
+
+    <span class="d-block p-2">Get ready to ride with us</span>
+    <br>
+    <br>
+
+        <form class="form-inline my-2 my-lg-0" method="GET">
+            <input type="text" name="loc" placeholder="Search for Location" class="form-control">
+            <br>
+            <button class="btn btn-outline-success my-2" type="submit">Search</button>
+        </form>
+        <form action=" {{ url_for('main.usrform') }} " method="POST">
+            <div class="form-group">
+                {{ form.pick_up.label() }}
+                {{ form.pick_up(class="form-control" ) }}
+                {{ form.Destination.label() }}
+                {{ form.Destination(class="form-control" ) }}
+                {{ form.r_now.label() }}
+                {{ form.r_now(class="form-control" ) }}
+                <br>
+                <button class="btn btn-primary">Submit</button>
+            </div>
+
+        </form>
+   
+</div>
+
+
+{% endblock %}

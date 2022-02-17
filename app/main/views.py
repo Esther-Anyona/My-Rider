@@ -1,21 +1,35 @@
-from flask import render_template
 from . import main
 from flask import render_template,session, request,redirect,url_for,abort, flash
 from ..models import User
 from .. import db
-from .forms import UpdateUserProfile
+from .forms import UpdateUserProfile, UsrForm
 from flask_login import login_required, current_user
-
-
+from app.main import forms
 
 @main.route('/')
 def index():
   return render_template('home.html')
-
+@main.route('/usr', )
+def usr():
+  loc=request.args.get('loc')
+  return render_template('usr.html')
 # Testing
 # @main.route('/')
 # def user():
 #   return render_template('user.html')
+@main.route('/usr', )
+def usr():
+  loc=request.args.get('loc')
+  return render_template('usr.html')
+
+@main.route('/usrform', methods=['POST','GET'])
+def usrform():
+  form=UsrForm()
+  if request.method == 'POST':
+    pick_up = request.form.get('pick_up')
+    Destination = request.form.get('Destination')
+    r_now = request.form.get('r_now')
+  return render_template('usr.html',form=form)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -57,3 +71,4 @@ def review(rider_id):
         new_review.save_review()
         return redirect(url_for('.review',rider_id = rider_id ))
     return render_template('review.html',rider = rider, reviews=reviews, review_form=review_form)Development
+
