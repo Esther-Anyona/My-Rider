@@ -1,8 +1,8 @@
 from flask import render_template, redirect, request, url_for, flash, session
 from . import auth
-from ..models import User, Rider
+from ..models import User
 from .. import db
-from .forms import RegistrationFormUser, LoginFormRider, RegistrationFormRider, LoginFormUser
+from .forms import RegistrationFormUser, LoginFormUser
 from flask_login import login_user,logout_user,login_required
 from ..email import mail_message
 
@@ -27,30 +27,6 @@ def register_user():
         mail_message("Welcome to Ride Link","email/welcome_user",user.email,user=user)
         return redirect(url_for('auth.login_users'))
     return render_template('auth/register_user.html',registration_form_user = form_user)
-
-@auth.route('auth/login/rider',methods=['GET','POST'])
-def login_rider():
-    login_form_rider = LoginFormRider()
-    if login_form_rider.validate_on_submit():
-        rider = Rider.query.filter_by(email = login_form_rider.email.data).first()
-
-        if rider is not None and rider.verify_password(login_form_rider.password.data):
-            login_user(rider,login_form_rider.remember.data)
-            return redirect(request.args.get('next') or url_for('rider.home'))
-
-        flash('Invalid username or Password')
-    return render_template('auth/login_rider.html', login_form_rider = login_form_rider)
-
-@auth.route('auth/register/rider',methods = ["GET","POST"])
-def register():
-    form_rider = RegistrationFormRider()
-    if form_rider.validate_on_submit():
-        rider = Rider(email = form_rider.email.data, username = form_rider.username.data,password = form_rider.password.data, phone_number = form_rider.phone_number.data, number_plate = form_rider.number_plate.data)
-        db.session.add(rider)
-        db.session.commit()
-
-        return redirect(url_for('auth.login_rider'))
-    return render_template('auth/register_rider.html',registration_form_rider = form_rider)
 
 @auth.route('auth/logout')
 @login_required

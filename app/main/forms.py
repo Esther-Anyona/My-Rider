@@ -10,8 +10,7 @@ class ReviewForm(FlaskForm):
     review = TextAreaField('Review a rider',validators=[InputRequired()])
     submit = SubmitField('Review')
     
-class UsrForm(FlaskForm):
+class UserForm(FlaskForm):
     pick_up = StringField('Enter location', validators=[InputRequired()])
-    Destination = StringField('Enter Destination', validators=[InputRequired()])
-    r_now = StringField('Request Now', validators=[InputRequired()])
+    submit = SubmitField('Search')
 
