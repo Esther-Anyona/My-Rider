@@ -1,6 +1,6 @@
 from . import main
 from flask import render_template,session, request,redirect,url_for,abort, flash
-from ..models import User
+from ..models import User,Review
 from .. import db
 from .forms import UpdateUserProfile, UsrForm
 from flask_login import login_required, current_user
@@ -17,11 +17,6 @@ def usr():
 # @main.route('/')
 # def user():
 #   return render_template('user.html')
-@main.route('/usr', )
-def usr():
-  loc=request.args.get('loc')
-  return render_template('usr.html')
-
 @main.route('/usrform', methods=['POST','GET'])
 def usrform():
   form=UsrForm()
@@ -70,5 +65,5 @@ def review(rider_id):
         new_review = Review(review=review, rider_id=rider_id, user_id=user_id)
         new_review.save_review()
         return redirect(url_for('.review',rider_id = rider_id ))
-    return render_template('review.html',rider = rider, reviews=reviews, review_form=review_form)Development
+    return render_template('review.html',rider = rider, reviews=reviews, review_form=review_form) 
 
