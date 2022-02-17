@@ -1,11 +1,11 @@
 from . import main
 from flask import render_template,session, request,redirect,url_for,abort, flash
-from ..models import User
+from ..models import User,Review
 from .. import db
 from .forms import UpdateUserProfile, UserForm
 from flask_login import login_required, current_user
 from app.main import forms
-from ..models import User
+
 
 @main.route('/')
 def index():
@@ -16,6 +16,22 @@ def user():
     form=UserForm()
 
     return render_template('usr.html', form=form)
+@main.route('/usr', )
+def usr():
+  loc=request.args.get('loc')
+  return render_template('usr.html')
+# Testing
+# @main.route('/')
+# def user():
+#   return render_template('user.html')
+@main.route('/usrform', methods=['POST','GET'])
+def usrform():
+  form=UserForm()
+  if request.method == 'POST':
+    pick_up = request.form.get('pick_up')
+    Destination = request.form.get('Destination')
+    r_now = request.form.get('r_now')
+  return render_template('usr.html',form=form)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -48,6 +64,8 @@ def review(rider_id):
         review = review_form.review.data
         new_review = Review(review=review, rider_id=rider_id, user_id=user_id)
         new_review.save_review()
-        return redirect(url_for('.review',rider_id = rider_id ))
-    return render_template('review.html',rider = rider, reviews=reviews, review_form=review_form)
+        return redirect(url_for('.review',rider_id = rider_id )
+    
+    return render_template('review.html',rider = rider, reviews=reviews, review_form=review_form) 
+
 
