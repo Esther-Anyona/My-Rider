@@ -1,0 +1,6 @@
+<h1>Hi Esther</h1>
+{% if current_user.is_authenticated%}
+<a href="{{url_for('auth.logout')}}">Sign out</a>
+{% else %}
+<h2>Hello Ruweydha</h2>
+{% endif %}
