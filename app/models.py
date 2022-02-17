@@ -11,11 +11,12 @@ def load_user(user_id):
 class User(UserMixin, db.Model):
     __tablename__='users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db. Column(db.String(255), unique=True, nullable=False)
-    email = db. Column(db.String(255), unique=True, nullable=False)
-    password_hash = db.Column(db.String(255), nullable=False)
-    phone_number = db.Column(db.Integer, unique=True, nullable=False)
-    location = db. Column(db.String(255), unique=True, nullable=False)
+    username = db. Column(db.String(255), index=True)
+    email = db. Column(db.String(255), unique=True, index=True)
+    password_hash = db.Column(db.String(255))
+    phone_number = db.Column(db.Integer, unique=True)
+    location = db. Column(db.String(255))
+    profile_pic_path = db. Column(db.String(255))
     reviews = db.relationship('Review',backref='user',lazy='dynamic')
 
     @property
@@ -32,20 +33,15 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f"User{self.username}"
 
-@login_manager.user_loader
-def load_rider(rider_id):
-    return Rider.query.get(int(rider_id))
-
 class Rider(UserMixin, db.Model):
     __tablename__='riders'
     id = db.Column(db.Integer, primary_key=True)
-    username = db. Column(db.String(255), unique=True, nullable=False)
-    email = db. Column(db.String(255), unique=True, nullable=False)
-    password_secure = db.Column(db.String(255), nullable=False)
-    phone_number = db.Column(db.Integer, unique=True, nullable=False)
-    profile_pic_path = db.Column(db.String(255))
-    location = db. Column(db.String(255), unique=True, nullable=False)
-    number_plate = db. Column(db.String(255), unique=True, nullable=False)
+    username = db. Column(db.String(255), index=True)
+    email = db. Column(db.String(255), unique=True, index=True)
+    password_secure = db.Column(db.String(255))
+    phone_number = db.Column(db.Integer, unique=True)
+    number_plate = db. Column(db.String(255), unique=True)
+    location = db. Column(db.String(255))
     reviews = db.relationship('Review',backref='rider',lazy='dynamic')
 
     @property
@@ -66,15 +62,20 @@ class Rider(UserMixin, db.Model):
 class Review(db.Model):
     __tablename__ = 'reviews'
     id = db.Column(db.Integer, primary_key=True)
-    review = db.Column(db.Text(),nullable = False)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
-    rider_id = db.Column(db.Integer,db.ForeignKey('riders.id'),nullable = False)
-    time = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    review = db.Column(db.Text)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    rider_id = db.Column(db.Integer,db.ForeignKey('riders.id'))
+    time = db.Column(db.DateTime, default=datetime.utcnow)
 
 
     def save_review(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def get_reviews(cls,id):
+        reviews = Review.query.filter_by(rider_id=id).all()
+        return reviews
 
     def __repr__(self):
         return f'Review:{self.review}'
