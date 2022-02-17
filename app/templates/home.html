@@ -1,87 +1,134 @@
 {% extends 'bootstrap/base.html' %}
 {%block content%}
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> <link rel="stylesheet" href="/static/css/index.css">
 <div class="start">
-<div class="navbar navbar-iniverse" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-               <span class="icon-bar">SignUp</span>
-              <span class="icon-bar">Login</span>
-             </button>
-            <a class="navbar-brand" href="/">RideLink</a>
-         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">SignUp</a></li>
-                <li><a href="/">Login</a></li>
-          </ul>
-        </div>
+    <div class="navbar navbar-primary" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar">About-Us</span>
+                    <span class="icon-bar">SignUp</span>
+                    <span class="icon-bar">Login</span>
+                </button>
+                <a class="navbar-brand" href="/">RideLink</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#About-Us">About-Us</a></li>
+                    <li><a href="/">SignUp</a></li>
+                    <li><a href="/">Login</a></li>
+                </ul>
+            </div>
 
+        </div>
     </div>
 </div>
-            <section class="banner-area">
-            <img src="../static/images/bike.jpeg" alt="">
-            </section>
 
-            <section class=" Rlnk" id="Rlnk">
-                <div class="text-part">
-                    <h1>WHY RIDE LINK ?</h1>
-                    <p>
-                        Our community of RideLink riders all receive extensive training<br> to make them the safest and most professional riders on the streets.
+<div>
+    <section class="banner-area">
+        <img src="../static/images/Safe-Boda-Riders.jpeg" class="disp-img" alt="">
+    </section>
+</div>
+<div>
+    <section class="rlnk" id="rlink2">
+        <h1 class="why-us">WHY RIDE LINK ?</h1>
+        <p class="txt">
+            Our community of RideLink riders all receive extensive training<br> to make them the safest and most
+            professional riders on the streets.
+    
+            They are:
+    
+            Trained in road safety, first aid, <br> bike maintenance and customer care.<br>
+            Equipped with hairnets <br> and a spare helmet
+            Identifiable and trackable through our system
+            When riders join the RideLink community, they see significant<br> increase in their business providing
+            impact to themselves, their family and the wider community.
+        </p>
+    </section>
+</div>
 
-                        They are:
-
-                        Trained in road safety, first aid, <br> bike maintenance and customer care.<br>
-                        Equipped with hairnets <br> and a spare helmet
-                        Identifiable and trackable through our system
-                        When riders join the RideLink community, they see significant<br> increase in their business providing impact to themselves, their family and the wider community. 
-                     </p>
-                </div>
-                </section>
+   
+<!-- footer section -->
+ <footer class="bg-light text-dark pt-5 pb-4">
+    <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left">
+            <div class="col-md-3 col-lg-3 col-x1-3bmx-auto mt-3" id="About-Us">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">About us</h5>
+               <hr class="mb-4">
+               <p>Movement is what we do. It’s our lifeblood. It runs through our veins. It’s what gets us out of bed each morning. It pushes us to constantly reimagine how we can move better. For you. For all the places you want to go. For all the things you want to get. For all the ways you want to earn. Across the entire world. In real time. At the incredible speed of now. </p>
             </div>
-                <footer class="footer">
+            <div class="col-md-2 col-lg-2 col-x-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Let Us Help</h5>
+                <hr class="mb-4">
+               <p>
+                   <a href="#" class="text-dark"style="text-decoration:none">Your Account</a>
+               </p>
+               <p>
+                <a href="#" class="text-dark"style="text-decoration:none">Manage Your Content And Devices</a>
+            </p>
+            <p>
+                <a href="#" class="text-dark"style="text-decoration:none">Help</a>
+            </p>
 
-                    <div class="container text-part text-md-left">
-                        <div class="row" text-center text-md-left>
-                            <div class="col-md-3 col-x1-3 mx-auto mt-3">
-                                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">social links</h5>
-                            </div>
-                            <div class="img">
-                                <div class="face">
-                                <img src="../static/images/facebook.png">
-                            </div>
-                                <div class="insta">
-                                <img src="../static/images/insta.jpeg">
-                            </div>
-                                <div class="ssup">
-                                <img src="../static/images/whatssap.jpeg">
-                            </div>
-                            </div>
-     
+            </div>
+            <div class="col-md-2 col-lg-2 col-x-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Offers</h5>
+                <hr class="mb-4">
+               <p>
+                   <a href="#" class="text-dark"style="text-decoration:none">Free Hollyday rides</a>
+               </p>
+               <p>
+                <a href="#" class="text-dark"style="text-decoration:none">Free weekend Deliveries</a>
+            </p>
+            <p>
+                <a href="#" class="text-dark"style="text-decoration:none">Help</a>
+            </p>
 
-                            <div class="col-md-2 col-lg-2 col-x1-2 mx-auto mt-3">
-                                <h5 class="contuct" >contacts</h5>
-                            </div>
-                            <div class="fab">
-                                <div class="tell">
-                                <img src="../static/images/tell.png"> 
-                            </div>
-
-                                <div class="email">
-                                <img src="../static/images/email.png"> 
-                            </div>
-                                <div class="yahoo">
-                                <img src="../static/images/yahoo.png"> 
-                            </div>
-                            <div class="About">
-                                <h1>fnmjnhgvfcdxcvtbnhjmk,l.lkjhgfd</h1>
-                            </div>
-
-                             </div>
-                        </div>
-                 
-                </footer>
-      {% endblock %}
- 
+            </div>
+            <div class="col-md-4 col-lg-3 col-x-3 mx-auto mt-3 text-light">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
+                <hr class="mb-4"><i class="fa-solid fa-house"></i>
+               <p>
+                <li class="fa fa-home mr-3"></li>Nairobi 254,Kenya
+                 </p>
+                <p>
+                    <li class="fa fa-envelope mr-3"></li>Email@Ridelink.com
+                 </p>
+                 <p>
+                    <li i class="fa fa-phone mr-3"></li> +254712345678 
+                 </p>
+                 <p>
+                    <li class="fa fa-print mr-3"></li>+12 34567896786
+                 </p>
+         </div>
+          <hr class="col-mb-4">
+          <div class="row d-flex justify-content-center">
+              <div>
+                   <p>
+                      Copyright 2022 All Rights Reserved By:
+                      <a href="#"style="text-decoration:none;"></a>
+                      <strong class="text-info">RideLink</strong>
+                  </p>
+              </div>
+          </div>
+           <div class="row d-flex justify-content-center">
+               <div class="text-center">
+                   <ul class="list-unstyled list-inline">
+                       <li class="list-inline-item">
+                           <a href="#" class="text-litext-lightght"><i class="fab fa-facebook"></i></a>
+                       </li>
+                       <li class="list-inline-item">
+                        <a href="#" class=""><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="text-light"><i class="fab fa-linkedin"></i></a>
+                    </li>
+                    </ul>
+               </div>
+           </div>
+        </div>
+ </footer>
+{% endblock %}
