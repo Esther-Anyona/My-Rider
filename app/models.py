@@ -4,14 +4,6 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#   if session['account_type'] == 'User':
-#       return User.query.get(int(user_id))
-#   elif session['account_type'] == 'Rider':
-#       return Rider.query.get(int(user_id))
-#   else:
-#       return None
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -24,6 +16,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(255))
     phone_number = db.Column(db.Integer, unique=True)
     location = db. Column(db.String(255))
+    profile_pic_path = db. Column(db.String(255))
     reviews = db.relationship('Review',backref='user',lazy='dynamic')
 
     @property
@@ -40,8 +33,6 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f"User{self.username}"
 
-
-
 class Rider(UserMixin, db.Model):
     __tablename__='riders'
     id = db.Column(db.Integer, primary_key=True)
@@ -51,7 +42,6 @@ class Rider(UserMixin, db.Model):
     phone_number = db.Column(db.Integer, unique=True)
     number_plate = db. Column(db.String(255), unique=True)
     location = db. Column(db.String(255))
-    profile_pic_path = db. Column(db.String(255))
     reviews = db.relationship('Review',backref='rider',lazy='dynamic')
 
     @property
