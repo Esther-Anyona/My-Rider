@@ -27,7 +27,7 @@
               <li><hr class="dropdown-divider"></li>
               <li>
                 {% if user == current_user %}
-                <a class="dropdown-item" href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+                <a class="dropdown-item" href="{{url_for('main.update_profile',uname=user.username)}}">Edit Location</a>
                 {% endif %}
               </li>
             </ul>
