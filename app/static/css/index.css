@@ -1,13 +1,11 @@
 
-  .start{
+.start{
     height: 100%;
     width: 100%;
 }
-
 .navbar-collapse {
     float: right;
 }
-
 .banner-area {
     width: 100%;
     height: 100%;
@@ -15,75 +13,46 @@
     margin: 1% 1% 2% 1%;
     padding-bottom: 1%;
 }
-.banner-area img {
+.disp-img {
     height:20%;
     width: 100%;
     margin: 1% 0% 1% 0%;
 }
-    
 .rlink {
     width: 100%;
     height: 100%;
     margin: 1% 5% 1% 5%;
 }
-
 h1 {
     text-align: center;
     font: bold;
     color:red;
 }
-.txt {
-    place-items: centre;
-    width: 80%;
-    margin: 2% 5% 5% 5%;
-    font: italic normal 2rem Arial, Helvetica, sans-serif;
+.why{
+    font-size: large;
 }
-
 h5 {
     font-size: 20px;
 }
  .bg-light{
      background:#12188a;
  }
- 
- .text-uppercase{
-     color: white;
- }
- .text-dark{
-     color: white;
- }
-
- /* .img img {
-    height: 50px;
-    width: 50px;
-    display: inline-block;
-}
-.fab img{
-    height: 50px;
-    width: 50px;
-    float: right;
-}
-.img {
-    bottom: -150px;
-    position: absolute;
-} */
-.contuct {
-    margin-left: 450%;
-    color: white;
-}
 
 .footer {
     height: 40vh;
     width: 100%;
-    background-color: #0000ff;
+    background-color: #0000FF;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 .fa {
-    color: white;
-}  
+    color: black;
+}
 .fab {
-    color: white;
+    color: black;
+}
+.Nai{
+color: black;
 }
 #center {
     margin: auto;
@@ -101,4 +70,31 @@ h5 {
 span{
     color: #0000ff;
     font-size: 20px;
+}
+.custom-shape-divider-bottom-1645133368 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+.custom-shape-divider-bottom-1645133368 svg {
+    position: relative;
+    display: block;
+    width: calc(197% + 1.3px);
+    height: 204px;
+}
+.custom-shape-divider-bottom-1645133368 .shape-fill {
+    fill: #292694;
+}
+.myhead{
+    color: blue;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bolder;
+    font-size: 50px;
+    font-stretch: extra-expanded;
 }
