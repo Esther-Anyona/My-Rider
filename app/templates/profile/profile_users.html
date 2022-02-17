@@ -1,32 +1,38 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h3> {{user.username| title}} </h3>
-            {% if user.location %}
-            <p> Location: {{user.location}}</p>
+<div class="container" id="center">
+    <div class="profile" style="margin:auto;">
+        <div class="card" style="width: 45rem;">
+            <h3 class="card-title text-center mt-5">{{user.username| title}}</h3>
+            {% if user.profile_pic_path %}  
+            <img class="thumbnail" src="{{url_for('static',filename=user.profile_pic_path)}}" class="card-img-top" style="border-radius: 50px;" class="rounded-circle" width="300px" height="300px"alt="...">
             {%else%}
-            <p>No location data saved for {{user.username| title}}</p>
-            {% endif %}
-            {% if user == current_user %}
-                <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
-            {% endif %}
-        </div> 
-        <div class="col-md-4">
-            {% if user.profile_pic_path %}
-            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
-            {%else%}
-            <p>User has no photo uploaded</p>
-            {% endif %}
-                {% if user == current_user %}
-                    <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
-                    <input type="file"  name="photo" class="form-control" required>
-                    <input type="submit">
-                    </form>
+                <p class="text-center">User has no photo uploaded</p>
                 {% endif %}
+            <div class="card-body">
+                {% if user.location %}
+                <p class="card-text text-center"><span> Location:</span> {{user.location}}</p>
+                {%else%}
+                    <p class="text-center">No location data saved for {{user.username| title}}</p>
+                    {% endif %}
+            {% if user == current_user %}
+                <p class="text-center"><span>Phone number:</span> {{user.phone_number}}</p>
+                <p class="text-center"><span>Email:</span> {{user.email}}</p>
+            {% endif %} 
+            <div class="loc">        
+                <a href="{{url_for('main.update_profile',uname=user.username)}}" class="btn btn-primary">Change Location</a>
+            </div>
+            </div>
         </div>
-    </div> 
+    {% if user == current_user %}
+    <div class="photo">
+        <form class="prof mt-2" action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+        <input type="file"  name="photo" class="form-control" required>
+        <input class="mt-3" type="submit">
+        </form>
+    </div>
+    {% endif %}
+    </div>
 </div>
 {% endblock %}
