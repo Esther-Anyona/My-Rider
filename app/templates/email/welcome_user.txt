@@ -1,0 +1,3 @@
+Hello {{user.username}}!
+Excited that you signed up on Ride Link. Welcome to the family.
+Regards.
