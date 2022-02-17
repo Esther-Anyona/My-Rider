@@ -2,6 +2,7 @@ from . import main
 from flask import render_template,request,redirect,url_for
 from .forms import UsrForm
 from app.main import forms
+from ..models import User
 
 
 @main.route('/')
