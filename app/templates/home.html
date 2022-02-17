@@ -1,5 +1,28 @@
-<h1>My Rider</h1>
-<div class="nav navbar-nav navbar-right">
+
+{% extends 'bootstrap/base.html' %}
+{%block content%}
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="/static/css/index.css">
+<div class="start">
+<div class="navbar navbar-iniverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="icon-bar">SignUp</span>
+              <span class="icon-bar">Login</span>
+             </button>
+            <a class="navbar-brand" href="/">RideLink</a>
+         </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">SignUp</a></li>
+                <li><a href="{{url_for('auth.login_users')}}">Login</a></li>
+          </ul>
+        </div>
+
+    </div>
+</div>
+  <div class="nav navbar-nav navbar-right">
     {% if current_user.is_authenticated %}
     <a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a>
     <a href="{{url_for('auth.logout')}}">Sign out</a>
@@ -7,3 +30,68 @@
     <a href="{{url_for('auth.login_users')}}">Sign in</a>
     {%endif%}
   </div>
+            <section class="banner-area">
+            <img src="../static/images/bike.jpeg" alt="">
+            </section>
+
+            <section class=" Rlnk" id="Rlnk">
+                <div class="text-part">
+                    <h1>WHY RIDE LINK ?</h1>
+                    <p>
+                        Our community of RideLink riders all receive extensive training<br> to make them the safest and most professional riders on the streets.
+
+                        They are:
+
+                        Trained in road safety, first aid, <br> bike maintenance and customer care.<br>
+                        Equipped with hairnets <br> and a spare helmet
+                        Identifiable and trackable through our system
+                        When riders join the RideLink community, they see significant<br> increase in their business providing impact to themselves, their family and the wider community. 
+                     </p>
+                </div>
+                </section>
+            </div>
+                <footer class="footer">
+
+                    <div class="container text-part text-md-left">
+                        <div class="row" text-center text-md-left>
+                            <div class="col-md-3 col-x1-3 mx-auto mt-3">
+                                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">social links</h5>
+                            </div>
+                            <div class="img">
+                                <div class="face">
+                                <img src="../static/images/facebook.png">
+                            </div>
+                                <div class="insta">
+                                <img src="../static/images/insta.jpeg">
+                            </div>
+                                <div class="ssup">
+                                <img src="../static/images/whatssap.jpeg">
+                            </div>
+                            </div>
+     
+
+                            <div class="col-md-2 col-lg-2 col-x1-2 mx-auto mt-3">
+                                <h5 class="contact" >contacts</h5>
+                            </div>
+                            <div class="fab">
+                                <div class="tell">
+                                <img src="../static/images/tell.png"> 
+                            </div>
+
+                                <div class="email">
+                                <img src="../static/images/email.png"> 
+                            </div>
+                                <div class="yahoo">
+                                <img src="../static/images/yahoo.png"> 
+                            </div>
+                            <div class="About">
+                                <h1>fnmjnhgvfcdxcvtbnhjmk,l.lkjhgfd</h1>
+                            </div>
+
+                             </div>
+                        </div>
+                 
+                </footer>
+      {% endblock %}
+ 
+
