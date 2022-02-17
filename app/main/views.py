@@ -5,6 +5,7 @@ from .. import db
 from .forms import UpdateUserProfile, UserForm
 from flask_login import login_required, current_user
 from app.main import forms
+from ..models import User
 
 @main.route('/')
 def index():
