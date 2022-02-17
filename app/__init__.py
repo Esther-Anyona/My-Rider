@@ -4,10 +4,9 @@ from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_mail import Mail
-# from flask_session import Session
+from flask_uploads import UploadSet,configure_uploads,IMAGES
 
-# SESSION_TYPE = 'memcache'
-# session = Session()
+photos = UploadSet('photos',IMAGES)
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -25,6 +24,8 @@ def create_app(config_name):
     # Creating the app configurations
     app.config.from_object(config_options[config_name])
 
+    configure_uploads(app,photos)
+    
     # Initializing flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
