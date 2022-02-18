@@ -6,12 +6,19 @@
       </button>
       <div class="collapse navbar-collapse " id="navbarNavDropdown">
         <ul class="navbar-nav">
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('main.user')}}">Home</a>
+          </li>
+          {% else %}
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
           </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
+          
         </ul>
       </div>
       <ul class="nav navbar-nav navbar-right">

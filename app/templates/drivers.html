@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Hello {{current_user.username}}</h2>
+<div class="container">
+    {% if drivers %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">username</th>
+            <th scope="col">phone number</th>
+            <th scope="col">Number plate</th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for driver in drivers %}
+          <tr>
+            <td>{{driver.id}}</td>
+            <td>{{driver.username}}</td>
+            <td>{{driver.phone_number}}</td>
+            <td>{{driver.number_plate}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <h2>No drivers in this area</h2>
+    {% endif %}  
+</div>
+<a href="{{url_for('main.review', id = current_user.id)}}">Tell us how your ride was</a>
+{% endblock %}

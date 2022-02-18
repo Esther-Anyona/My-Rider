@@ -1,8 +1,9 @@
+from crypt import methods
 from . import main
 from flask import render_template,session, request,redirect,url_for,abort, flash
-from ..models import User,Review
+from ..models import User,Review, Rider
 from .. import db, photos
-from .forms import UpdateUserProfile, UserForm
+from .forms import UpdateUserProfile, UserForm, ReviewForm
 from flask_login import login_required, current_user
 from app.main import forms
 
@@ -15,20 +16,12 @@ def index():
 def user():
     form=UserForm()
 
-    return render_template('usr.html', form=form)
-@main.route('/usr', )
-def usr():
-  loc=request.args.get('loc')
-  return render_template('usr.html')
+    if form.validate_on_submit():
+        location = form.pick_up.data
+        pickup = location.lower()
+        return redirect(url_for('main.drivers', location = pickup))
 
-@main.route('/usrform', methods=['POST','GET'])
-def usrform():
-  form=UserForm()
-  if request.method == 'POST':
-    pick_up = request.form.get('pick_up')
-    Destination = request.form.get('Destination')
-    r_now = request.form.get('r_now')
-  return render_template('usr.html',form=form)
+    return render_template('usr.html', form=form)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -51,19 +44,19 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
     return render_template('profile/update_user.html',form =form)
 
-@main.route('/review/<int:rider_id>', methods = ['GET','POST'])
+@main.route('/user/review', methods = ['GET','POST'])
 @login_required
-def review(rider_id):
+def review():
     review_form = ReviewForm()
-    rider = Rider.query.get(rider_id)
-    reviews = Review.query.filter_by(rider_id = rider_id).all()
     if review_form.validate_on_submit():
+        driver_id = review_form.driver_id.data
+        rider_id = Rider.query.filter_by(id = driver_id).first()
         review = review_form.review.data
-        new_review = Review(review=review, rider_id=rider_id, user_id=user_id)
+        new_review = Review(review=review, rider=rider_id, user_id=current_user.id)
         new_review.save_review()
-        return redirect(url_for('.review',rider_id = rider_id ))
+        return redirect(url_for('main.user'))
 
-    return render_template('review.html',rider = rider, reviews=reviews, review_form=review_form) 
+    return render_template('review.html', review_form=review_form) 
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
@@ -75,3 +68,10 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/drivers/<string:location>')
+def drivers(location):
+    drivers = Rider.query.filter_by(location = location).all()
+
+    return render_template('drivers.html', drivers = drivers)
+   
